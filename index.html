@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="UTF-8" />
+      
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      
+        <title>Basic Vue Js - HelloWorld App</title>
+      
+      
+      
+        <!-- https://google.github.io/material-design-icons/#icon-font-for-the-web -->
+      
+        <!-- Using via Google Web Fonts -->
+      
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+      
+      
+      
+        <!-- https://tailwindcss.com/docs/installation -->
+      
+        <!-- Using Tailwind via CDN -->
+      
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+      
+      
+      
+        <!-- https://v3.vuejs.org/guide/installation.html#release-notes -->
+      
+        <!-- Vue CDN -->
+      
+        <script src="https://unpkg.com/vue@next"></script>
+      
+        <!-- validator -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+
+      </head>
+<body>
+    <div id="app" class="min-h-screen pb-20 w-screen bg-gray-200">
+        <div class="flex justify-center w-full pt-20">
+            <div class="p-3 bg-white pb-5 rounded-md w-6/12 hover:shadow">
+                <div class="flex justify-start w-full p-6"> 
+                    <img :src="imgURL" width="200" class="rounded-lg">
+                    <div class="ml-5">
+                        <div class="p-3">
+                            <h3 class="text-5xl">{{ firstname + ' ' + lastname }}</h3> <h4 class="text-2xl mt-4">{{ profession }}</h4>
+                        </div>
+                        <div class="flex justify-around items-center p-3 bg-gray-100 rounded-lg">
+                            <div class="mr-3"> <span class="text-gray-400 block text-2xl">Article</span> <span class="font-bold text-black text-4xl">{{ article }}</span> </div>
+                            <div class="mr-3"> <span class="text-gray-400 block text-2xl">Followers</span> <span class="font-bold text-black text-4xl" v-on:click="">{{ follower }}</span> </div>
+                            <div> <span class="text-gray-400 block  text-2xl">Ratings</span> <span class="font-bold text-black text-4xl">{{ rating }}</span> </div>
+                        </div>
+                    </div>
+                </div>
+                <div v-if="errors" class="text-red-500 m-10 p-5 bg-gray-200">
+                    <ul>
+                       <li v-for="error in errors">
+                           {{ error }}
+                       </li> 
+                    </ul>
+                </div>
+                <div>
+                    <h1 class="text-4xl ml-10 mt-5">Edit Account</h1>
+                    <form @submit="validateSubmit" method="POST">
+                        <div class="grid grid-cols-2 gap-1 gap-y-4 mt-6 text-2xl pl-10 pr-10">   
+                            <label for="username">Username<span class="text-red-500">*</span></label>
+                            <input v-model="account.username" type="text" name="username" class="bg-gray-100 rounded-md pl-5 pr-5 text-xl"/>
+                            <label for="email">Email<span class="text-red-500">*</span></label>
+                            <input v-model="account.email" type="text" name="email" class="bg-gray-100 rounded-md pl-5 pr-5 text-xl"/>
+                            <label for="password">Password<span class="text-red-500">*</span></label>
+                            <input v-model="account.password" type="password" name="password" class="bg-gray-100 rounded-md pl-5 pr-5 text-xl"/>
+                            <label for="firstname">Firstname<span class="text-red-500">*</span></label>
+                            <input v-model="account.firstname" type="text" name="firstname" class="bg-gray-100 rounded-md pl-5 pr-5 text-xl"/>
+                            <label for="lastname">Lastname<span class="text-red-500">*</span></label>
+                            <input v-model="account.lastname" type="text" name="lastname" class="bg-gray-100 rounded-md pl-5 pr-5 text-xl"/>
+                            <label for="age">Age<span class="text-red-500">*</span></label>
+                            <input v-model="account.age" type="number" name="age" class="bg-gray-100 rounded-md pl-5 pr-5 text-xl w-4/12"/>
+                            <label for="title">Title</label>
+                            <input v-model="account.title" type="text" name="title" class="bg-gray-100 rounded-md pl-5 pr-5 text-xl"/>
+                            <label for="gender">Gender<span class="text-red-500">*</span></label>
+                            <select v-model="account.gender" class="bg-gray-100 w-4/12">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                            <input type="submit" value="submit" class="bg-blue-500 rounded-md text-white text-md p-1.5 mt-4 w-8/12">
+                        </div>
+                    </form>
+                </div>
+                <!-- <div class="flex justify-between items-center mt-2 gap-2"> <button class="w-full h-12 rounded-md border-2 text-md hover:shadow hover:bg-red-700 hover:border-red-700 hover:text-white ">Chat</button> <button class="w-full h-12 rounded-md bg-blue-700 text-white text-md hover:shadow hover:bg-blue-800">View Profile</button> </div> -->
+            </div>
+        </div>
+    </div>
+</body>
+    <script src="profile.js"></script>
+</html>
