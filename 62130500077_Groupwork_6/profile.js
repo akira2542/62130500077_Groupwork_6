@@ -59,18 +59,7 @@ const app = {
     },
     methods : {
         validateSubmit(e) {
-            this.errors = validate(
-                {
-                    firstname: this.account.firstname,
-                    lastname : this.account.lastname,
-                    username : this.account.username,
-                    password : this.account.password,
-                    age: this.account.age,
-                    email: this.account.email,
-                    title: this.account.title,
-                    gender: this.account.gender
-                }
-                ,constraints)
+            this.errors = validate(this.account,constraints)
             if (this.errors) {
                 console.log(this.errors)
                 e.preventDefault();
